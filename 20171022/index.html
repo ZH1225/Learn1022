@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <style>
+        /*global setting*/
+
+        * {
+            font-family: "Montserrat";
+            box-sizing: border-box;
+            /*當你設定一個元素樣式為 box-sizing: border-box;，這個元素的內距和邊框將不會增加元素本身的寬度。*/
+        }
+
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        ul,
+        li,
+        ol {
+            margin: 0;
+            padding: 0;
+        }
+
+        .clearfix::after {
+            content: "";
+            display: block;
+            clear: both;
+
+        }
+
+        img {
+            width: 100%;
+        }
+
+        /*******************************************/
+
+        /*Layout*/
+
+        .full-width {
+            width: 100%;
+            /*設定滿版 */
+        }
+
+        .fixed-width {
+            width: 1200px;
+            margin: auto;
+            /*製中;因為是區塊所以用margin auto*/
+        }
+
+        .col-1 {
+            width: 100%;
+            padding: 15px;
+        }
+
+        .col-2 {
+            width: 50%;
+        }
+
+        .col-3 {
+            width: calc(100%/3);
+        }
+
+        .col-4 {
+            width: 25%;
+        }
+
+        .col-5 {
+            width: 20%;
+        }
+
+        /*把一樣元素寫在一起*/
+
+        .col-2,
+        .col-3,
+        .col-4,
+        .col-5 {
+            float: left;
+            padding: 15px;
+        }
+
+        p {
+            color: #606060;
+            font-size: 13px;
+            line-height: 2.5em;
+        }
+
+        /*Nav*/
+
+        nav {
+            /*background-color: #c6c6c6;*/
+            position: fixed;
+        }
+
+        nav .col-1 {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        nav .logo {
+            float: left;
+            color: #fff;
+        }
+
+        nav .menu {
+            float: right;
+        }
+
+        nav .menu li {
+            float: left;
+            list-style: none;
+        }
+
+        nav .menu a {
+            text-decoration: none;
+            display: block;
+            /* 區塊 */
+            color: #fff;
+            margin-left: 30px;
+            font-size: 14px;
+            transition: all .4s;
+
+        }
+
+        nav .menu a:hover {
+            color: #1747e6;
+        }
+
+        header {
+            background-image: url(images/banner.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            padding-top: 300px;
+            padding-bottom: 300px;
+            color: #fff;
+            text-align: center;
+
+        }
+
+        /*如果要用table寫header的圖片 
+            header{
+            background-image: url(images/banner.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            height: 800px;
+            color: #fff;
+            text-align: center;
+            display: table;
+            
+        }
+        
+        header .fixed-width{
+           display: table-cell;
+            vertical-align: middle;  
+        } */
+
+        header h1 {
+            font-size: 4em;
+        }
+
+        header p {
+            font-size: 1em;
+            color: #fff;
+        }
+
+        /********************************************/
+
+        /*Slogan*/
+
+        #slogan {
+            padding-top: 150px;
+            padding-bottom: 150px;
+        }
+
+        #slogan .fixed-width {
+            width: 760px;
+            text-align: center;
+        }
+
+        #slogan h2 {
+            margin-bottom: 30px;
+        }
+
+        /**************************************/
+
+        /*Works*/
+
+        #works {
+            background-image: url(images/banner.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            padding-top: 150px;
+            padding-bottom: 150px;
+        }
+
+        /***********************************/
+
+        /*Services*/
+
+        #service {
+            padding-top: 150px;
+            padding-bottom: 150px;
+        }
+
+        #service .fixed-width:nth-of-type(1) {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        #service h2 {
+            margin: 30px;
+        }
+
+        #service h3 {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        #service .col-3 {
+            height: 260px;
+        }
+
+        /*讓內容不論多少都等高,所以給固定高度*/
+
+        /*************************/
+
+        /*banner*/
+
+        #banner {
+            background-color: #c1c1c1;
+            padding-top: 150px;
+            padding-bottom: 150px;
+            text-align: center;
+        }
+
+        /*********************************/
+
+        /*About*/
+
+        #about {
+            padding-top: 150px;
+            padding-bottom: 150px;
+            text-align: center;
+        }
+
+        #about h2 {
+            margin-bottom: 30px;
+        }
+
+        #about .fixed-width:nth-of-type(1) {
+            margin-bottom: 50px;
+        }
+
+        #about .pic {
+            height: 370px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            /*border-radius: 10px; 圓角*/
+            border-radius: 50%;
+            /*圓形：一半*/
+            border: 10px solid #d3d3d3;
+            transform: scale(.8);
+            /*縮小*/
+        }
+
+        /**********************************/
+
+        /*Purchase*/
+
+        #purchase {
+            background-color: #000;
+            padding-top: 150px;
+            padding-bottom: 150px;
+            color: #fff;
+            text-align: center;
+        }
+
+        #purchase h2 {
+            margin-bottom: 30px;
+        }
+
+        #purchase a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .btn {
+            display: inline-block;
+            /*a是行內元素,所以padding沒有用;block有預設padding,活用性所以用inline-block*/
+            padding: 10px 30px;
+            border: 1px solid #fff;
+        }
+        #blog{
+            padding-top: 150px;
+            padding-bottom: 150px;
+        }
+           #blog h2{
+            margin-bottom: 30px;
+        }
+        
+        #blog .fixed-width:nth-of-type(1){
+            padding-bottom: 50px;
+            text-align: center;
+        } 
+        #blog .gallery{  /*相對定位包住絕對定位*/
+            height: 300px;  /*1200/4 -30 */
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        #blog .gallery img{
+            position: absolute;
+        }
+        #blog .gallery .date{
+            position: absolute;
+          /*也可以用width去推  width:50px; */
+            background-color: #000;
+            top: 0;
+            left: 0;
+            text-align: center;
+             color: #fff;
+          /*  padding-top: 5px;
+            padding-bottom: 5px;  */
+            padding: 5px 10px;
+            
+        }
+        #blog .col-4 p{
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        #blog .col-4 a{
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+        }
+        #banner2{
+            background-image: url(images/banner.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            padding-top: 150px;
+            padding-bottom: 150px;
+        }
+      
+    </style>
+</head>
+
+<body>
+    <nav class="full-width">
+        <div class="col-1 clearfix">
+            <!--因為logo, menu是浮動 所以加clearfix-->
+            <div class="logo">AFELA</div>
+            <div class="menu">
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">WORKS</a></li>
+                    <li><a href="#">SERVICES</a></li>
+                    <li><a href="#">ABOUT US</a></li>
+                    <li><a href="#">BLOG</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="full-width">
+        <div class="fixed-width">
+            <h1>AMAZING DESIGN</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+        </div>
+    </header>
+    <div id="slogan" class="full-width">
+        <div class="fixed-width">
+            <h2>WE ARE FAMILY<br>WE ARE FAMILY TOO</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, provident ducimus consectetur. Quos explicabo, sapiente cum molestiae accusamus maiores laboriosam eveniet, aspernatur rem maxime harum dolorem delectus, beatae ea saepe.</p>
+        </div>
+    </div>
+    <div id="works" class="full-width"></div>
+    <div id="service" class="full-width">
+        <div class="fixed-width">
+            <!--包的col-3有浮動所以用clearfix -->
+            <h2>BEST SERVICES</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+        </div>
+        <div class="fixed-width clearfix">
+            <div class="col-3">
+                <!--因為是文字所以用行內元素span寫 -->
+                <span class="fa fa-meetup fa-4x"></span>
+                <h3>title</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi inventore animi deserunt rem amet rerum officiis iusto nobis beatae ut.</p>
+            </div>
+            <div class="col-3">
+                <span class="fa fa-address-card fa-4x"></span>
+                <h3>title</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi inventore animi deserunt rem amet rerum officiis iusto nobis beatae ut.</p>
+            </div>
+            <div class="col-3">
+                <span class="fa fa-grav fa-4x"></span>
+                <h3>title</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi inventore animi deserunt rem amet rerum officiis iusto nobis beatae ut.</p>
+            </div>
+            <div class="col-3">
+                <span class="fa fa-american-sign-language-interpreting fa-4x"></span>
+                <h3>title</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi inventore animi deserunt rem amet rerum officiis iusto nobis beatae ut.</p>
+            </div>
+            <div class="col-3">
+                <span class="fa fa-meetup fa-4x"></span>
+                <h3>title</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi inventore animi deserunt rem amet rerum officiis iusto nobis beatae ut.</p>
+            </div>
+            <div class="col-3">
+                <span class="fa fa-meetup fa-4x"></span>
+                <h3>title</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi inventore animi deserunt rem amet rerum officiis iusto nobis beatae ut.</p>
+            </div>
+        </div>
+    </div>
+    <div id="banner" class="full-width">
+        <div class="fixed-width">
+            <h2>TITLE</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, id reprehenderit. Quam nulla dignissimos dolor?</p>
+        </div>
+    </div>
+    <div id="about" class="full-width">
+        <div class="fixed-width">
+            <h2>ABOUT US</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni veniam, nisi accusantium!</p>
+        </div>
+        <div class="fixed-width clearfix">
+            <div class="col-3">
+                <div class="pic">
+                    <img src="images/clarisse-meyer-213603.jpg" alt=""> </div>
+                <h3>APPLE</h3>
+                <p>CEO</p>
+
+            </div>
+            <div class="col-3">
+                <div class="pic">
+                    <img src="images/clarisse-meyer-213603.jpg" alt=""></div>
+                <h3>APPLE</h3>
+                <p>CEO</p>
+
+            </div>
+            <div class="col-3">
+                <div class="pic">
+                    <img src="images/012.jpg" alt="">
+                </div>
+                <h3>APPLE</h3>
+                <p>CEO</p>
+            </div>
+        </div>
+    </div>
+    <div id="purchase" class="full-width">
+        <div class="fixed-width">
+            <h2>Are you ready to dream?</h2>
+            <a href="#" class="btn">Dream Now</a>
+        </div>
+    </div>
+    <div id="blog" class="full-width">
+        <div class="fixed-width">
+            <h2>LASTST NEWS</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio </p>
+        </div>
+        <div class="fixed-width clearfix">
+            <div class="col-4">
+                <div class="gallery">
+                    <img src="images/annie-spratt-326937.jpg">
+                    <div class="date">
+                        <div class="day">13</div>
+                        <div class="month">Mar</div>
+                    </div>
+                </div>
+                <h3>TITLE</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet soluta, nesciunt modi.</p>
+                <a href="#">Read More></a></div>
+                <div class="col-4">
+                <div class="gallery">
+                    <img src="images/annie-spratt-326937.jpg">
+                    <div class="date">
+                        <div class="day">13</div>
+                        <div class="month">Mar</div>
+                    </div>
+                </div>
+                <h3>TITLE</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet soluta, nesciunt modi.</p>
+                <a href="#">Read More></a></div>
+                <div class="col-4">
+                <div class="gallery">
+                    <img src="images/annie-spratt-326937.jpg">
+                    <div class="date">
+                        <div class="day">13</div>
+                        <div class="month">Mar</div>
+                    </div>
+                </div>
+                <h3>TITLE</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet soluta, nesciunt modi.</p>
+                <a href="#">Read More></a></div>
+                <div class="col-4">
+                <div class="gallery">
+                    <img src="images/annie-spratt-326937.jpg">
+                    <div class="date">
+                        <div class="day">13</div>
+                        <div class="month">Mar</div>
+                    </div>
+                </div>
+                <h3>TITLE</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet soluta, nesciunt modi.</p>
+                <a href="#">Read More></a></div>
+        
+        </div>
+    </div>
+    <div id="banner2" class="full-width"></div>
+    <div id="contact" class="full-width">
+       <div class="fixed-width">
+           <h2>CONTACT</h2>
+           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus reiciendis, hic ducimus!</p>
+       </div>
+       <div class="fixed-width">
+           .col
+       </div>
+        
+    </div>
+</body>
+
+</html>
